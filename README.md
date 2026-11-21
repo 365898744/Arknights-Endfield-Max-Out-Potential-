@@ -17,19 +17,6 @@
 | `host_slim.cpp` | 测试驱动，8 项断言 |
 | `run_test.cmd` | 一键构建假模块 + 跑测试 |
 
-## 删掉了什么
-
-| 删除项 | 行数 | 删除原因 |
-|---|---|---|
-| `ApplyRvaGetters` + `CountPattern` + `DisplayAllowed` + `SimpleGetterLen` | ~120 | 按 RVA 覆写单个 getter，实测对页面无影响 |
-| `ApplyUiCmpPatches` | ~50 | 10 处 `cmp [reg+0x74],5` 强制成立，实测无影响 |
-| `ApplyCallSiteReturns` | ~45 | 3 处 `call get_PotentialLevel` 改写，实测无影响 |
-| `DumpFields` + `FieldClassWanted` + 字段 API 指针 | ~40 | 一次性诊断，已完成使命（结论已写入本文档） |
-| `PatchGetter` | ~18 | getter 覆写，实测无影响 |
-| `PotentialFixPatchRva` 导出 | ~10 | 仅用于测试上述无效路径 |
-| `g_display* / g_ui* / g_call* / g_diag* / g_field*` 全局与 ini 解析 | ~90 | 随上述功能一并移除 |
-
-**只保留真正生效的五处补丁 + 跳板 + 加载框架。**
 
 ## 最终实现
 
